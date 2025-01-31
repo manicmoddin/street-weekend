@@ -57,3 +57,17 @@ for entry in this_year_entries:
 browser.close()
 
 pprint(racers)
+
+# Now comes the fun bit - Looping though the list to pull out details.
+# What is the most popular manufacturer taking part?
+manufacturers = dict()
+for racer in racers:
+    manufact = racer['car_man']
+    if manufact in manufacturers:
+        manufacturers[manufact] =  manufacturers[manufact] +1
+    else:
+         manufacturers[manufact] = 1
+
+sorted_manufacturers = sorted(manufacturers, key=manufacturers.get, reverse=True)
+for m in sorted_manufacturers:
+    print(m, manufacturers[m])
